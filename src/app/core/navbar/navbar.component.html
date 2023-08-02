@@ -1,0 +1,9 @@
+<nav>
+    <div class="navbar-container">
+      <span class="brand">Your Brand</span>
+      <div class="logout-container" *ngIf="isLoggedIn()">
+        <button mat-button color="warn" (click)="onLogout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+  
