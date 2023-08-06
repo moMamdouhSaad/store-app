@@ -1,0 +1,21 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four items per row */
+  grid-gap: 16px; /* Margin between grid items */
+  align-items: stretch; /* Make all grid items the same height */
+  // height:129px !important
+
+
+}
+
+.grid-item {
+  max-height:400px !important
+
+  /* Adjust the item's styling as needed */
+  /* For example: border: 1px solid #ccc; padding: 16px; */
+}
+::ng-deep .mdc-slider .mdc-slider__value-indicator {
+  transform: none !important;
+}
+
+

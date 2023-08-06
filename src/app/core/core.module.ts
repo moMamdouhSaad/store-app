@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [],
   imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent],
+  exports: [],
 })
 export class CoreModule {}

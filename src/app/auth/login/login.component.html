@@ -1,5 +1,5 @@
 <!-- login.component.html -->
-<mat-card>
+<!-- <mat-card>
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
@@ -20,5 +20,35 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
       </form>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
   
+
+
+
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+<mat-card-content>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Username" formControlName="username">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+  </p>
+
+  <div *ngIf="error" >
+    <mat-error>{{error}}</mat-error>
+  </div>
+
+  <div class="button">
+    <button [disabled]="loginForm.invalid" type="submit" mat-button>Login</button>
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>

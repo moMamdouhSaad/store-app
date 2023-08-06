@@ -1,0 +1,14 @@
+#container{
+    -webkit-box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.75);
+    background-color: #c8cdeb;
+    .category-text{
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        &:hover{
+            color: white;
+        }
+    }
+}

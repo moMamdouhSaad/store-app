@@ -3,21 +3,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticatedGuard } from './guards/authanticated.guard';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule),canActivate: [AuthenticatedGuard]},
   {
-    path: 'user',
-    loadChildren: () => import('./pages/products-user-view/products-user-view.module').then(m => m.ProductsUserViewModule),
+    path: 'products',
+    component: ProductsComponent, // the parent component
     canActivate: [AuthGuard],
-    data: { role: 'user' }
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./pages/products-admin-view/products-admin-view.module').then(m => m.ProductsAdminViewModule),
-    canActivate: [AuthGuard,AdminGuard],
-    data: { role: 'admin' }
+    children:[
+      {
+        path: 'user',
+        loadComponent: () => import('./pages/products-user-view/products-user-view.component').then(m => m.ProductsUserViewComponent),
+        canActivate: [AuthGuard],
+        data: { role: 'user' }
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./pages/products-admin-view/products-admin-view.module').then(m => m.ProductsAdminViewModule),
+        canActivate: [AuthGuard,AdminGuard],
+        data: { role: 'admin' }
+      },
+    ]
   },
   { path: '**', redirectTo: '/login' } 
 ];

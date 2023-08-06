@@ -1,1 +1,50 @@
-<p>products-user-view works!</p>
+
+
+  <div fxLayout="column" >
+
+  
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px" style="position: relative">
+
+      <div fxFlex="20%" class="sticky-filter" >
+        <app-filter>
+
+          <!-- Price filter -->
+ 
+          <div fxLayout="row" fxLayoutAlign="space-between start" >
+            
+            from {{minPriceControl || (minPrice$|async) }}
+            to {{maxPriceControl || (maxPrice$|async)}}
+
+          </div>
+
+          <mat-slider thumbLabel   [min]="minPrice$|async" [max]="maxPrice$ | async" style="width:100%">
+            <input [(ngModel)]="minPriceControl " [value]="minPrice$|async" matSliderStartThumb>
+            <input  [(ngModel)]="maxPriceControl " [value]="maxPrice$|async" matSliderEndThumb>
+          </mat-slider>
+          <!--  -->
+
+
+          <!-- categories filter -->
+          <div fxLayout="column">
+            <span>Categories:</span>
+            <mat-checkbox disabled *ngFor="let category of categories$ | async">{{category}}</mat-checkbox>
+          
+          </div>
+
+          <!--  -->
+
+
+        </app-filter>
+      </div>
+
+      <div class="grid-container" fxFlex="80%" style="margin-top: 390px !important">
+        <div class="grid-item"  *ngFor="let product of products$ | async">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+  </div>

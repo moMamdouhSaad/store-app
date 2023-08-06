@@ -9,7 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthGuard } from './guards/auth.guard';
 import { LoginModule } from './auth/login/login.module';
-import { CoreModule } from './core/core.module';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,12 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     FlexLayoutModule,
     LoginModule,
-    CoreModule
+    HttpClientModule,
+
+    // Components
+    NavbarComponent
   ],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

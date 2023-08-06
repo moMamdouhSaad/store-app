@@ -1,9 +1,29 @@
-<nav>
-    <div class="navbar-container">
-      <span class="brand">Your Brand</span>
-      <div class="logout-container" *ngIf="isLoggedIn()">
-        <button mat-button color="warn" (click)="onLogout()">Logout</button>
+
+
+  <nav class="sticky-nav" >
+  
+    <mat-toolbar color="primary" class="container">
+      
+
+      <span>Store app</span>
+      <span class="example-spacer"></span>
+
+
+      <div *ngIf="isLoggedIn()" fxLayout="row" fxLayoutGap="10px">
+        <div>Welcome (user)</div>
+
+        <button mat-icon-button (click)="onLogout()"   >
+          <mat-icon>logout</mat-icon>
+        </button>
       </div>
-    </div>
-  </nav>
+      
+
+
+
+    </mat-toolbar>
+<app-categories-list [list]="categoriesList$ | async"></app-categories-list>
+  
+</nav>
+
+
   
