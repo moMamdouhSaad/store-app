@@ -11,6 +11,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginModule } from './auth/login/login.module';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsTableComponent } from './shared/components/products-table/products-table.component';
 
 @NgModule({
   declarations: [
@@ -29,5 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
+  exports: [
+  ],
 })
 export class AppModule { }

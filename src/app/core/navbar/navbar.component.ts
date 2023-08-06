@@ -5,7 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { CategoriesListComponent } from 'src/app/auth/shared/components/categories-list/categories-list.component';
+import { CategoriesListComponent } from 'src/app/shared/components/categories-list/categories-list.component';
 import { Observable } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
 

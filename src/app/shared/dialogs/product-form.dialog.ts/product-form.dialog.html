@@ -1,0 +1,63 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start start" id="form">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter title" />
+      <mat-error *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+        Title is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories$ | async" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('category')?.invalid && form.get('category')?.touched">
+        Category is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+      <mat-error *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+        Description is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" placeholder="Enter price" type="number" />
+      <mat-error *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+        Please enter a valid price (greater than or equal to 0).
+      </mat-error>
+    </mat-form-field>
+
+     <!-- Image Upload -->
+
+      <mat-form-field>
+		<ngx-mat-file-input (change)="onFileChange($event)" valuePlaceholder="click here to upload image" formControlName="image" [multiple]="false" accept="image/*" >
+		</ngx-mat-file-input>
+        <mat-icon matSuffix>upload</mat-icon>
+
+	</mat-form-field>
+
+    <img style="max-width:240px ;max-height:200px ;" [src]="productImg" alt="Default Image" class="image-preview" />
+
+
+    <div style="width:100%;margin-top:10px ;" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+
+        <button mat-stroked-button color="warn">cancel</button>
+
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Submit
+          </button>
+    </div>
+  
+   
+  </form>
+  

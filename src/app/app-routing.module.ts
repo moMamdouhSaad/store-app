@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'admin',
-        loadChildren: () => import('./pages/products-admin-view/products-admin-view.module').then(m => m.ProductsAdminViewModule),
+        loadComponent: () => import('./pages/products-admin-view/products-admin-view.component').then(m => m.ProductsAdminViewComponent),
         canActivate: [AuthGuard,AdminGuard],
         data: { role: 'admin' }
       },

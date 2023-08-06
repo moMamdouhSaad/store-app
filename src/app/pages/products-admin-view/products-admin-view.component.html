@@ -1,1 +1,9 @@
-<p>products-admin-view works!</p>
+<div class="container" fxLayout="row" fxLayoutAlign="end center" style="margin-bottom: 10px" >
+    <button mat-flat-button color="primary" (click)="openProductFormDialog()">Add new Product</button>
+</div>
+
+<div style="margin-bottom:40px">
+
+    <app-products-table  (editProductClicked)="openProductFormDialog($event)" (deleteProductClicked)="openConfirmDialog($event)" [products]="products$ | async"></app-products-table>
+
+</div>

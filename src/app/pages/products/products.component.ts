@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CategoriesListComponent } from 'src/app/auth/shared/components/categories-list/categories-list.component';
+import { CategoriesListComponent } from 'src/app/shared/components/categories-list/categories-list.component';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 
