@@ -26,7 +26,6 @@ export class ProductsAdminViewComponent implements OnInit {
     private categoriesService:CategoriesService,private _snackBar: MatSnackBar){
     this.categoriesService.loadCategories();
     this.productsService.loadProductsToDashboard()
-    this.productsService.getProducts$().subscribe(data=>{console.log(data)})
     this.products$ =  this.productsService.getProducts$()
 
   }

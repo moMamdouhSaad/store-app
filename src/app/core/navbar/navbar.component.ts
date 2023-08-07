@@ -42,7 +42,6 @@ export class NavbarComponent implements OnInit {
 
         }, 300);
 
-        console.log(user)
         this.username = user.username
         if (user.role === UserCredential.ADMIN) {
           this.isAdmin = true;

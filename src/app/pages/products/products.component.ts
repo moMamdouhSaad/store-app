@@ -13,7 +13,7 @@ import { ProductsUserViewComponent } from '../products-user-view/products-user-v
   standalone: true,
   imports: [CommonModule, RouterModule, CategoriesListComponent, ProductsUserViewComponent]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent  {
 
 
   constructor(private readonly productsServices: ProductsService, private categoriesService: CategoriesService,
