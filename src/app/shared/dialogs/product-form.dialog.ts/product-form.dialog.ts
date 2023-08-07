@@ -49,8 +49,7 @@ import { MatSelectModule } from "@angular/material/select";
             
         const product = this.product;
         this.productImg = product.image??'assets/def_product.png'
-        console.log(product)
-        console.log(this.productImg)
+
            
         this.form = this.formBuilder.group({
             title: [product?product.title:'', Validators.required],
@@ -90,7 +89,6 @@ import { MatSelectModule } from "@angular/material/select";
           this.form.patchValue({ image: URL.createObjectURL(file) });
           this.productImg = URL.createObjectURL(file)
           this.form.get('image')?.updateValueAndValidity();
-          console.log(this.form.value)
         }
       }
 

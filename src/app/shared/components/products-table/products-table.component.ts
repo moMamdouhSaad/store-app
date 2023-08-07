@@ -54,7 +54,6 @@ export class ProductsTableComponent {
 
 
   editProduct(product: Product): void {
-    console.log('product')
     this.editProductClicked.emit(product)
   }
   

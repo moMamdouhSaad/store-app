@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
 
     const expectedRole = next.data['role'];
     const currentUser = this.authService.getCurrentUserFromLocalStorage();
-    console.log(currentUser)
 
     if (currentUser && (currentUser.role === expectedRole || currentUser.role === UserCredential.ADMIN)) {
       return true; 

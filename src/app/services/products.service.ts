@@ -33,7 +33,7 @@ export class ProductsService {
 
     this._productsSubject.next([]);
 
-     if (!category) {
+    if (!category) {
       this._selectedCategory.next('ALL')
       this.router.navigate(['/products']);
     }
@@ -42,7 +42,7 @@ export class ProductsService {
       this.router.navigate(['/products'], { queryParams: { category }, queryParamsHandling: 'merge' });
       this._selectedCategory.next(category)
 
-    }  
+    }
 
 
     this.http.get<Product[]>(`${environment.apiUrl}/products${category ? '/category/' + category : ''}`).pipe(
@@ -94,12 +94,11 @@ export class ProductsService {
     this._lastID.next(id);
   }
 
-  getSelectedCategory$():Observable<string>{
+  getSelectedCategory$(): Observable<string> {
     return this._selectedCategory.asObservable()
   }
 
   updateProduct(product: Product): void {
-    console.log(product)
     // Get the current list of products
     const currentProducts = this._productsSubject.value;
 
@@ -155,10 +154,6 @@ export class ProductsService {
   getLastId$(): Observable<number> {
     return this._lastID.asObservable();
   }
-
-
-
-
 
 
 }

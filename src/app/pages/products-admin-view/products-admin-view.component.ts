@@ -35,7 +35,6 @@ export class ProductsAdminViewComponent implements OnInit {
   }
 
   openProductFormDialog(product?:Product | any):void{
-    console.log(product)
       const dialogRef = this.dialog.open(ProductFormDialog, {
         width: '400px',
         data: { product, action: product ? ProductFormDialogActionTypes.EDIT : ProductFormDialogActionTypes.ADD }
@@ -72,10 +71,6 @@ export class ProductsAdminViewComponent implements OnInit {
         this.openSnackBar('Item deleted successfully')
         // Delete the item here (perform the action)
         this.productsService.deleteProductWithId(id)
-        console.log('Item deleted');
-      } else {
-        // Cancelled or closed without confirming
-        console.log('Deletion cancelled');
       }
     });
   }

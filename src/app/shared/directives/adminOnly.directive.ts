@@ -15,7 +15,6 @@ export class AdminOnlyDirective {
 
   @Input() set appAdminOnly(condition: boolean) {
     const user = this.authService.getCurrentUserFromLocalStorage();
-    console.log(user)
 
     if (user && user.role === UserCredential.ADMIN && condition) {
       this.viewContainer.createEmbeddedView(this.templateRef);
