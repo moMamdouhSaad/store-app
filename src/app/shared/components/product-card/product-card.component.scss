@@ -6,6 +6,7 @@
     align-items: stretch;
     justify-content: space-between;
     overflow-y: auto;
+    overflow: hidden;
 
 }
 :host{
@@ -33,3 +34,25 @@
     width: 100%;
     height: 100%;
   }
+
+  .add-to-cart-btn {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    width: 100%; 
+    z-index: 100;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* Hide the button initially */
+    transition: opacity 0.3s;
+    border-radius: 10px;
+  }
+
+  .mat-card:hover {
+    opacity: 0.8; /* Change the opacity on hover */
+ 
+  }
+  
+  .mat-card:hover .add-to-cart-btn {
+  opacity: 1; /* Show the button on card hover */
+}

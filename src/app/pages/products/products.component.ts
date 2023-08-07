@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoriesListComponent } from 'src/app/shared/components/categories-list/categories-list.component';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -15,12 +15,17 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit {
   
   
-  constructor(private readonly productsServices:ProductsService, private categoriesService:CategoriesService){
+  constructor(private readonly productsServices:ProductsService, private categoriesService:CategoriesService,
+    private route:ActivatedRoute
+    ){
 
-  this.productsServices.loadProducts();
+      const categoryParam = this.route.snapshot.queryParamMap.get('category') as string;
+  this.productsServices.loadProducts(categoryParam);
   this.categoriesService.loadCategories();
 
     this.productsServices.getProducts$().subscribe(data=>{console.log(data)})
+
+
     
 
   }

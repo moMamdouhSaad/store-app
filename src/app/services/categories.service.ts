@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, delay, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class CategoriesService {
 
   loadCategories(): void {
     this.http.get<string[]>(`${environment.apiUrl}/products/categories`).pipe(
+      delay(150),
       tap(categories => this._categoriesListSubj.next(categories))
     ).subscribe()
   }

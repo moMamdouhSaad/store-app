@@ -1,0 +1,40 @@
+<!-- product-card.component.html -->
+
+<mat-card class="example-card">
+
+    <!-- Card Header -->
+    <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+        <!-- Skeleton for avatar image -->
+        <ngx-skeleton-loader appearance="circle" [theme]="{ width: '80px', height: '80px' }">
+        </ngx-skeleton-loader>
+         <!-- Skeleton for title -->
+
+         <div fxLayout="column" fxLayoutAlign="start stretch">
+            <ngx-skeleton-loader appearance="line" [theme]="{ width: '80px', height: '12px' }">
+            </ngx-skeleton-loader> <!-- Skeleton for subtitle -->
+            <ngx-skeleton-loader appearance="line" [theme]="{ width: '80px', height: '12px' }">
+                </ngx-skeleton-loader>
+         </div>
+    
+
+
+</mat-card-header>
+            <!-- Card Image -->
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-image-container">
+                <!-- Skeleton for card image -->
+                <ngx-skeleton-loader appearance="line" [theme]="{ width: '120px', height: '180px' }">
+                </ngx-skeleton-loader>
+            </div>
+
+            <!-- Card Content -->
+            <div fxLayout="column" fxLayoutAlign="center center" >
+                <ngx-skeleton-loader appearance="line" [theme]="{ width: '120px', height: '12px' }">
+                </ngx-skeleton-loader> <!-- Skeleton for subtitle -->
+                <ngx-skeleton-loader appearance="line" [theme]="{ width: '120px', height: '12px' }">
+                    </ngx-skeleton-loader>
+             </div>
+
+            <!-- Card Actions -->
+         
+
+</mat-card>

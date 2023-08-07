@@ -1,7 +1,11 @@
 <div class="card-wrapper" >
 
-    <mat-card class="example-card" >
+    <mat-card class="mat-card" >
       <mat-card-header>
+        <span [matBadge]="product.rating.rate
+                " matBadgePosition="before" matBadgeColor="warn"
+                >
+        </span>
         <img
           src="https://www.freakyjolly.com/wp-content/uploads/2021/07/cropped-cropped-fj-logo-192-removebg-preview-e1625997712615-1.png"
           mat-card-avatar />
@@ -17,9 +21,15 @@
         </div>
       </div>
 
-     <div style="height:190px;overflow-y: auto ;">
+     <div style="height:190px;overflow-y: auto ">
       <mat-card-content fxLayout="row" fxLayoutAlign="start start">
         {{ product.description  | truncate :160}}
+       </mat-card-content>
+     </div>
+
+     <div>
+<mat-card-content fxLayout="row" fxLayoutAlign="start start">
+        {{ product.price + '$'}}
        </mat-card-content>
      </div>
     
@@ -30,6 +40,10 @@
         <button mat-raised-button color="primary">SHARE</button>
       </mat-card-actions>
      </div>
+
+
+     <button mat-flat-button color="warn" class="add-to-cart-btn">Add to Cart</button>
+
  
     </mat-card>
   

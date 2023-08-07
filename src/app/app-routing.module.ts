@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserCredential } from './enums/User.credentials.enum';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticatedGuard } from './guards/authanticated.guard';
@@ -11,19 +12,18 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent, // the parent component
-    canActivate: [AuthGuard],
     children:[
       {
-        path: 'user',
+        path: '',
         loadComponent: () => import('./pages/products-user-view/products-user-view.component').then(m => m.ProductsUserViewComponent),
         canActivate: [AuthGuard],
-        data: { role: 'user' }
+        data: { role: UserCredential.USER }
       },
       {
         path: 'admin',
         loadComponent: () => import('./pages/products-admin-view/products-admin-view.component').then(m => m.ProductsAdminViewComponent),
         canActivate: [AuthGuard,AdminGuard],
-        data: { role: 'admin' }
+        data: { role: UserCredential.ADMIN }
       },
     ]
   },

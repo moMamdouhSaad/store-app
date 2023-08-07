@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminOnlyDirective } from '../shared/directives/adminOnly.directive';
 
 @NgModule({
   declarations: [],

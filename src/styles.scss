@@ -7,7 +7,38 @@ body{
 }
 
 .container{
-    padding-left: 70px !important;
-    padding-right: 70px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   
+  }
+
+  @media (min-width: 600px) { /* gt-sm */
+    .container{
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+      
+      }
+  }
+
+  @media (min-width: 960px) { /* gt-md */
+    .container{
+        padding-left: 70px !important;
+        padding-right: 70px !important;
+      
+      }
+  }
+
+  @media (min-width: 1280px) { /* gt-lg */
+    .container{
+        padding-left: 70px !important;
+        padding-right: 70px !important;
+      
+      }
+  }
+
+  .text-15{
+      font-size: 15px !important;
+  }
+  .cursor-pointer{
+      cursor: pointer;
   }

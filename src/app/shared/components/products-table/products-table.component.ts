@@ -16,7 +16,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   imports:[CommonModule, MatTableModule,MatButtonModule, MatPaginatorModule],
 
 })
-export class ProductsTableComponent implements OnInit {
+export class ProductsTableComponent {
   dataSource!:MatTableDataSource<Product>
   // @Input() products!:Product[] | null;
   private _products!:Product[] | null;
@@ -39,10 +39,7 @@ export class ProductsTableComponent implements OnInit {
   
 
   @ViewChild(MatTable,{static:true}) table!: MatTable<any>;
-  constructor(private cdr:ChangeDetectorRef){}
-  ngOnInit(): void {
 
-  }
 
 
   editProduct(product: Product): void {

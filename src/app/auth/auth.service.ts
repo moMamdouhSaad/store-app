@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly USER_KEY = 'user';
+  private readonly USER_KEY = 'testas';
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem(this.USER_KEY);
@@ -21,7 +21,18 @@ export class AuthService {
   }
 
   getCurrentUser(): { username: string; role: string } | null {
-    const userString = localStorage.getItem(this.USER_KEY);
-    return userString ? JSON.parse(userString) : null;
+    try {
+      const userString = localStorage.getItem(this.USER_KEY);
+      if (userString) {
+        return JSON.parse(userString);
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.error('Error parsing user data from local storage:', error);
+      return null;
+    }
   }
+
+  
 }

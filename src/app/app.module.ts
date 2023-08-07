@@ -11,7 +11,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginModule } from './auth/login/login.module';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsTableComponent } from './shared/components/products-table/products-table.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductsTableComponent } from './shared/components/products-table/produ
     HttpClientModule,
 
     // Components
-    NavbarComponent
+    NavbarComponent,
+    NgxSkeletonLoaderModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

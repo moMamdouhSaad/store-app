@@ -7,6 +7,6 @@ export interface Product {
     description: string,
     category: string,
     image: string,
-    rating?: { rate: string, count: string }
+    rating: { rate: string, count: string }
 }
 

@@ -1,9 +1,37 @@
 
 
-<div id="container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"  >
+<div id="container" class="container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"  >
 
-  <span class="category-text" *ngFor="let category of list">{{category | titlecase}}</span>
+  <ng-container *ngIf="list?.length else loading ">
 
+    <div class="scrollable-container "  fxLayoutGap="10px">
+        
+        <a [routerLink]="['/products']" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="selected-category"
+          class="category-text" (click)="loadProductsWithCategory()">
+          {{ 'All Categories' }}
+        </a>
+
+        <a *ngFor="let category of list" [routerLink]="['/products']" [queryParams]="{ category: category }"
+          queryParamsHandling="merge" routerLinkActive="selected-category" class="category-text"
+          (click)="loadProductsWithCategory(category)">
+          {{ category | titlecase }}
+        </a>
+    </div>
     
+
+
+
+  </ng-container>
+  
+
+
 </div>
 
+
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="center center" class="card-image-container" fxLayoutGap="10px">
+    <ngx-skeleton-loader appearance="line" [theme]="{ width: '100px', height: '5px' }">
+    </ngx-skeleton-loader>
+
+</div>
+</ng-template>

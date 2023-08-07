@@ -70,7 +70,8 @@ import { MatSelectModule } from "@angular/material/select";
                 description: this.form.value.description,
                 image: this.form.value.image,
                 price: this.form.value.price,
-                title: this.form.value.title
+                title: this.form.value.title,
+                rating:{rate:'0',count:'0'}
             }
             this.dialogRef.close({ event: this.action, product });
         }
