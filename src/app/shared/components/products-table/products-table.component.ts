@@ -4,6 +4,7 @@ import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/
 import { Product } from 'src/app/models/products';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -13,7 +14,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   templateUrl: './products-table.component.html',
   styleUrls: ['./products-table.component.scss'],
   standalone:true,
-  imports:[CommonModule, MatTableModule,MatButtonModule, MatPaginatorModule],
+  imports:[CommonModule, MatTableModule,MatButtonModule, MatPaginatorModule,NgxSkeletonLoaderModule],
 
 })
 export class ProductsTableComponent {
@@ -23,8 +24,18 @@ export class ProductsTableComponent {
   // @Input() products!:Product[] | null;
 
   @Input() set products( data: Product[] | null ) {
-    this.dataSource= new MatTableDataSource<Product>(data as Product[]);
-    this.dataSource.paginator = this.paginator; // Assign the paginator to the data source
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator; // Assign the paginator to the data source
+      }, 0);
+
+      if(data && data.length){
+        this.dataSource= new MatTableDataSource<Product>(data as Product[]);
+        this.dataSource.paginator = this.paginator; // Assign the paginator to the data source
+
+      }
+   
+
+ 
 
   }
   displayedColumns: string[] = ['id', 'title', 'action'];

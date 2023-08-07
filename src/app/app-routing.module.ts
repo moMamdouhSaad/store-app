@@ -8,7 +8,7 @@ import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule),canActivate: [AuthenticatedGuard]},
+  { path: 'login', loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent),canActivate: [AuthenticatedGuard]},
   {
     path: 'products',
     component: ProductsComponent, // the parent component
@@ -19,13 +19,14 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: { role: UserCredential.USER }
       },
-      {
-        path: 'admin',
-        loadComponent: () => import('./pages/products-admin-view/products-admin-view.component').then(m => m.ProductsAdminViewComponent),
-        canActivate: [AuthGuard,AdminGuard],
-        data: { role: UserCredential.ADMIN }
-      },
+     
     ]
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/products-admin-view/products-admin-view.component').then(m => m.ProductsAdminViewComponent),
+    canActivate: [AuthGuard,AdminGuard],
+    data: { role: UserCredential.ADMIN }
   },
   { path: '**', redirectTo: '/login' } 
 ];

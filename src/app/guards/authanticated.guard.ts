@@ -11,7 +11,7 @@ export class AuthenticatedGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.authService.isLoggedIn()) {
       // If the user is logged in, redirect to the appropriate view (user or admin)
-      const role = this.authService.getCurrentUser()?.role;
+      const role = this.authService.getCurrentUserFromLocalStorage()?.role;
       if (role === 'user') {
         this.router.navigate(['/user']);
       } else if (role === 'admin') {

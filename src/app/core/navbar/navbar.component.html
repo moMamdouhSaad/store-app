@@ -10,13 +10,13 @@
 
 
       <div *ngIf="isLoggedIn()" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <span class="text-15">Welcome {{username}}</span>
+        <span *ngIf="!isAdmin" class="text-15">Welcome {{username}}</span>
 
 
-        <div *appAdminOnly="isAdmin">  
-        
-        
-          <button mat-flat-button >Switch to user mode</button>
+        <!-- appAdminOnly -->
+        <div *ngIf="isAdmin">  
+      
+          <button (click)="switchView()" mat-flat-button >Switch to {{isUserView?'Admin':'User'}} view</button>
 
         </div>
 
@@ -31,8 +31,9 @@
 
 
     </mat-toolbar>
-    
-    <app-categories-list *ngIf="isLoggedIn()" [list]="categoriesList$ | async"></app-categories-list>
+    <ng-container *ngIf="isUserView" >
+      <app-categories-list *ngIf="isLoggedIn()" [list]="categoriesList$ | async"></app-categories-list>
+    </ng-container>
   
 </nav>
 

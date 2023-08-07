@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { ProductFormDialogActionTypes } from 'src/app/enums/ProductFormDialogActionTypes.enum';
 import { Product } from 'src/app/models/products';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { ProductsTableComponent } from 'src/app/shared/components/products-table/products-table.component';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm.dialog';
@@ -15,12 +17,15 @@ import { ProductFormDialog } from 'src/app/shared/dialogs/product-form.dialog.ts
   templateUrl: './products-admin-view.component.html',
   styleUrls: ['./products-admin-view.component.scss'],
   standalone:true,
-  imports:[CommonModule, FlexLayoutModule, ProductsTableComponent, MatButtonModule,MatDialogModule]
+  imports:[CommonModule, FlexLayoutModule, ProductsTableComponent, MatButtonModule,MatDialogModule,MatSnackBarModule]
 })
 export class ProductsAdminViewComponent implements OnInit {
   products$!:Observable<Product[]>;
 
-  constructor(private productsService: ProductsService,private dialog: MatDialog){
+  constructor(private productsService: ProductsService,private dialog: MatDialog,
+    private categoriesService:CategoriesService,private _snackBar: MatSnackBar){
+    this.categoriesService.loadCategories();
+    this.productsService.loadProductsToDashboard()
     this.productsService.getProducts$().subscribe(data=>{console.log(data)})
     this.products$ =  this.productsService.getProducts$()
 
@@ -37,12 +42,17 @@ export class ProductsAdminViewComponent implements OnInit {
       });
   
       dialogRef.afterClosed().subscribe((result) => {
-        console.log(result)
 
-        if(result.event == ProductFormDialogActionTypes.ADD){
+        if(result?.event == ProductFormDialogActionTypes.ADD){
           this.productsService.addNewProduct(result.product);
+          this.openSnackBar('Item Added successfully')
+
+
+       
         }else if(result.event == ProductFormDialogActionTypes.EDIT){
           this.productsService.updateProduct(result.product);
+          this.openSnackBar('Item Updated successfully')
+
         }
       });
     
@@ -59,6 +69,7 @@ export class ProductsAdminViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       // Check the result of the dialog
       if (result === true) {
+        this.openSnackBar('Item deleted successfully')
         // Delete the item here (perform the action)
         this.productsService.deleteProductWithId(id)
         console.log('Item deleted');
@@ -70,7 +81,12 @@ export class ProductsAdminViewComponent implements OnInit {
   }
 
 
-
+  openSnackBar(msg:string) {
+    this._snackBar.open(msg);
+    setTimeout(() => {
+      this._snackBar.dismiss()
+    }, 2000);
+  }
   
   }
 

@@ -48,7 +48,9 @@ import { MatSelectModule } from "@angular/material/select";
             this.categories$ = this.categoriesService.getCategories$();
             
         const product = this.product;
-        this.productImg = product?product.image:'assets/def_product.png'
+        this.productImg = product.image??'assets/def_product.png'
+        console.log(product)
+        console.log(this.productImg)
            
         this.form = this.formBuilder.group({
             title: [product?product.title:'', Validators.required],
@@ -92,6 +94,9 @@ import { MatSelectModule } from "@angular/material/select";
         }
       }
 
+      closeDialog():void{
+        this.dialogRef.close();
+            }
 
   
   }

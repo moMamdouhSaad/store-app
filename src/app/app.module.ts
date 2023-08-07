@@ -8,10 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthGuard } from './guards/auth.guard';
-import { LoginModule } from './auth/login/login.module';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    LoginModule,
+    LoginComponent,
     HttpClientModule,
 
     // Components

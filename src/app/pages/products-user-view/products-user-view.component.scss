@@ -20,7 +20,7 @@
 
 
   .grid-container {
-    display: grid;
+  display: grid;
   grid-gap: 16px; /* Margin between grid items */
   align-items: stretch; /* Make all grid items the same height */
   }
@@ -30,7 +30,6 @@
    @media (min-width: 300px) { /* gt-sm */
     .grid-container {
       grid-template-columns: repeat(1, 1fr); /* Four items per row */
-      // padding:40px
     }
   }
 

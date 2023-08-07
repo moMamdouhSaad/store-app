@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 import { CategoriesListComponent } from 'src/app/shared/components/categories-list/categories-list.component';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { ProductsUserViewComponent } from '../products-user-view/products-user-view.component';
 
 @Component({
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
   standalone:true,
-  imports:[CommonModule,RouterModule,CategoriesListComponent]
+  imports:[CommonModule,RouterModule,CategoriesListComponent, ProductsUserViewComponent]
 })
 export class ProductsComponent implements OnInit {
   

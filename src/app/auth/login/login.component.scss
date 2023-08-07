@@ -4,9 +4,21 @@
     margin: 100px 0px;
   }
 
+  .mat-card-title{
+    margin-bottom: 50px;
+  }
+
   .mat-form-field {
     width: 100%;
-    min-width: 300px;
+    width: 270px;
+  }
+  mat-card{
+    padding-top:50px;
+    padding-bottom:50px;
+    // padding-left: 10px;
+    // padding-right: 10px;
+
+
   }
 
   mat-card-title,

@@ -27,16 +27,16 @@ export class ProductsService {
     return this._productsSubject.asObservable();
   }
 
-  loadProducts(category?: string): void {
-    console.log(category)
-    this._productsSubject.next([]);
 
+
+  loadProducts(category?: string): void {
+
+    this._productsSubject.next([]);
 
      if (!category) {
       this._selectedCategory.next('ALL')
       this.router.navigate(['/products']);
     }
-
 
     else {
       this.router.navigate(['/products'], { queryParams: { category }, queryParamsHandling: 'merge' });
@@ -51,9 +51,21 @@ export class ProductsService {
         this._productsSubject.next(products.reverse());
         const min = Math.min(...products.map(item => item.price));
         const max = Math.max(...products.map(item => item.price));
-        const lastID = Math.max(...products.map(item => item.id as number));
         this._minPrice.next(min)
         this._maxPrice.next(max)
+      },
+
+      )
+    ).subscribe()
+  }
+
+  loadProductsToDashboard(): void {
+
+    this.http.get<Product[]>(`${environment.apiUrl}/products`).pipe(
+      delay(2000), // to show skeleton loader 
+      tap(products => {
+        this._productsSubject.next(products.reverse());
+        const lastID = Math.max(...products.map(item => item.id as number));
         this._lastID.next(lastID)
       },
 

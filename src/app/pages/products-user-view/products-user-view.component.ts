@@ -14,6 +14,7 @@ import { ProductCardSkeletonComponent } from 'src/app/shared/components/product-
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
+  selector:'products-user-view',
   templateUrl: './products-user-view.component.html',
   styleUrls: ['./products-user-view.component.scss'],
   standalone:true,

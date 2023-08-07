@@ -1,102 +1,92 @@
+<div fxLayout="column">
 
 
-  <div fxLayout="column">
-
-  
-    <div
-    fxLayout="column" 
-     fxLayout.gt-sm="row" 
-     fxLayout.gt-md="row"
-    fxLayoutAlign="space-between start" fxLayoutGap="20px" style="position: relative">
+  <div fxLayout="column" fxLayout.gt-sm="row" fxLayout.gt-md="row" fxLayoutAlign="space-between start"
+    fxLayoutGap="20px" style="position: relative">
 
 
-      <!-- Filter -->
-      <div fxFlex="100%" fxFlex.gt-sm="100%" fxFlex.gt-md="20%" class='filter-container' style="width:100%">
-        <ng-container *ngIf="(categories$ | async)?.length!=0 else SkeltonFilter">
-          <app-filter>
-            <!-- Price filter -->
-   
-            <div fxLayout="row" fxLayoutAlign="space-between start" >
-              
-              from {{minPriceControl || (minPrice$|async) }}
-              to {{maxPriceControl || (maxPrice$|async)}}
-  
-            </div>
-  
-            <mat-slider thumbLabel disabled   [min]="minPrice$|async" [max]="maxPrice$ | async" style="width:90%">
-              <input [(ngModel)]="minPriceControl " [value]="minPrice$|async" matSliderStartThumb>
-              <input  [(ngModel)]="maxPriceControl " [value]="maxPrice$|async" matSliderEndThumb>
-            </mat-slider>
-            <!--  -->
-  
-  
-            <!-- categories filter -->
-            <div fxLayout="column">
-              <span>Categories:</span>
-              <mat-checkbox 
-              
-              [checked]="(selectedCategory$| async) === category || (selectedCategory$| async) === 'ALL'"
-              disabled *ngFor="let category of categories$ | async">{{category}}</mat-checkbox>
-            
-            </div>
-  
-            <!--  -->
-  
-  
-          </app-filter>
-        </ng-container>
-        
-     
-  
-        
+    <!-- Filter -->
+    <div fxFlex="100%" fxFlex.gt-sm="100%" fxFlex.gt-md="20%" class='filter-container' style="width:100%">
+      <ng-container *ngIf="(categories$ | async)?.length!=0 else SkeltonFilter">
+        <app-filter>
+          <!-- Price filter -->
 
-      </div>
-      <!--  -->
+          <div fxLayout="row" fxLayoutAlign="space-between start">
 
+            Price from {{minPriceControl || (minPrice$|async) }}
+            to {{maxPriceControl || (maxPrice$|async)}}
 
-      <ng-container *ngIf="(products$ | async)?.length!=0; else loadingSkeletonProducts">
-        <div 
-        fxFlex="100%" fxFlex.gt-sm="80%" fxFlex.gt-md="80%" 
-        class="grid-container" >
-          <div class="grid-item"  *ngFor="let product of products$ | async">
-            <app-product-card [product]="product"></app-product-card>
           </div>
-        </div>
+
+          <mat-slider thumbLabel disabled [min]="minPrice$|async" [max]="maxPrice$ | async" style="width:90%">
+            <input [(ngModel)]="minPriceControl " [value]="minPrice$|async" matSliderStartThumb>
+            <input [(ngModel)]="maxPriceControl " [value]="maxPrice$|async" matSliderEndThumb>
+          </mat-slider>
+          <!--  -->
+
+
+          <!-- categories filter -->
+          <div fxLayout="column">
+            <span>Categories:</span>
+            <mat-checkbox [checked]="(selectedCategory$| async) === category || (selectedCategory$| async) === 'ALL'"
+              disabled *ngFor="let category of categories$ | async">{{category}}</mat-checkbox>
+
+          </div>
+
+          <!--  -->
+
+
+        </app-filter>
       </ng-container>
-      
+
+
+
+
+
     </div>
-
-    
-  </div>
+    <!--  -->
 
 
-
-
-
-  <!-- LOADER skeletons -->
-  <ng-template #loadingSkeletonProducts>
-    <div class="grid-container" fxFlex="80%" style="margin-top: 390px !important">
-      <div class="grid-item"  *ngFor="let item of fakeArray ">
-        <app-product-card-skeleton></app-product-card-skeleton>
+    <ng-container *ngIf="(products$ | async)?.length!=0; else loadingSkeletonProducts">
+      <div fxFlex="100%" fxFlex.gt-sm="80%" fxFlex.gt-md="80%" class="grid-container">
+        <div class="grid-item" *ngFor="let product of products$ | async">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-container>
 
-
-
-  <ng-template #SkeltonFilter>
-    <div fxLayout="column" fxLayoutAlign="center center"  style="background-color: white;padding-top: 20px;">
-      
-      <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;" [theme]="{ width: '120px', height: '12px' }">
-      </ngx-skeleton-loader>
-      <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;"  [theme]="{ width: '120px', height: '12px' }">
-      </ngx-skeleton-loader>
-
-      <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;"  [theme]="{ width: '120px', height: '12px' }">
-      </ngx-skeleton-loader>
-
-      <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;"  [theme]="{ width: '120px', height: '12px' }">
-      </ngx-skeleton-loader>
   </div>
-  </ng-template>
-  
+
+
+</div>
+
+
+
+
+
+<!-- LOADER skeletons -->
+<ng-template #loadingSkeletonProducts>
+  <div class="grid-container" fxFlex="100%" fxFlex.gt-sm="80%" fxFlex.gt-md="80%" style="margin-top: 390px !important">
+    <div class="grid-item" *ngFor="let item of fakeArray ">
+      <app-product-card-skeleton></app-product-card-skeleton>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #SkeltonFilter>
+  <div fxLayout="column" fxLayoutAlign="center center" style="background-color: white;padding-top: 20px;">
+
+    <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;" [theme]="{ width: '120px', height: '12px' }">
+    </ngx-skeleton-loader>
+    <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;" [theme]="{ width: '120px', height: '12px' }">
+    </ngx-skeleton-loader>
+
+    <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;" [theme]="{ width: '120px', height: '12px' }">
+    </ngx-skeleton-loader>
+
+    <ngx-skeleton-loader appearance="line" style="margin-bottom:10px ;" [theme]="{ width: '120px', height: '12px' }">
+    </ngx-skeleton-loader>
+  </div>
+</ng-template>

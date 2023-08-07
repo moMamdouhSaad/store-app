@@ -1,6 +1,12 @@
 // login.component.ts
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { UserCredential } from 'src/app/enums/User.credentials.enum';
 import { AuthService } from '../auth.service';
@@ -8,7 +14,18 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone:true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FlexLayoutModule
+  ],
+
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -39,7 +56,7 @@ export class LoginComponent implements OnInit {
     } else if (username === UserCredential.ADMIN && password === UserCredential.ADMIN) {
               
       this.authService.login(username, UserCredential.ADMIN);
-      this.router.navigate(['/products/admin']); // Redirect to admin view
+      this.router.navigate(['/dashboard']); // Redirect to admin view
 
     } else {
       // Handle invalid credentials

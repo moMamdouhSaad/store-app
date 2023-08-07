@@ -1,9 +1,16 @@
-<div class="container" fxLayout="row" fxLayoutAlign="end center" style="margin-bottom: 10px" >
-    <button mat-flat-button color="primary" (click)="openProductFormDialog()">Add new Product</button>
-</div>
 
-<div style="margin-bottom:40px">
+<div class="container" style="margin-top: 100px">
+   
+    
+    <div style="margin-bottom:40px">
 
-    <app-products-table  (editProductClicked)="openProductFormDialog($event)" (deleteProductClicked)="openConfirmDialog($event)" [products]="products$ | async"></app-products-table>
 
+        <div  fxLayout="row" fxLayoutAlign="end center" style="margin-bottom: 10px" >
+            <button mat-flat-button color="primary" (click)="openProductFormDialog()">Add new Product</button>
+        </div>
+
+
+        <app-products-table  (editProductClicked)="openProductFormDialog($event)" (deleteProductClicked)="openConfirmDialog($event)" [products]="products$ | async"></app-products-table>
+    
+    </div>
 </div>
