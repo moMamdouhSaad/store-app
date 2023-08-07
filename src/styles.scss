@@ -1,44 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+body {
     background-color: rgb(243, 243, 243);
     padding: 0 !important;
     margin: 0 !important;
 
 }
 
-.container{
+.container {
     padding-left: 10px !important;
     padding-right: 10px !important;
-  
-  }
 
-  @media (min-width: 600px) { /* gt-sm */
-    .container{
+}
+
+@media (min-width: 600px) {
+    /* gt-sm */
+    .container {
         padding-left: 40px !important;
         padding-right: 40px !important;
-      
-      }
-  }
+    }
+}
 
-  @media (min-width: 960px) { /* gt-md */
-    .container{
+@media (min-width: 960px) {
+
+    /* gt-md */
+    .container {
         padding-left: 70px !important;
         padding-right: 70px !important;
-      
-      }
-  }
+    }
+}
 
-  @media (min-width: 1280px) { /* gt-lg */
-    .container{
+@media (min-width: 1280px) {
+
+    /* gt-lg */
+    .container {
         padding-left: 70px !important;
         padding-right: 70px !important;
-      
-      }
-  }
+    }
+}
 
-  .text-15{
-      font-size: 15px !important;
-  }
-  .cursor-pointer{
-      cursor: pointer;
-  }
+.text-15 {
+    font-size: 15px !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.margin-top-auto {
+    margin-top: auto;
+}

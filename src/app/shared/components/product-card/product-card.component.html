@@ -1,50 +1,48 @@
-<div class="card-wrapper" >
+<div class="card-wrapper">
 
-    <mat-card class="mat-card" >
-      <mat-card-header>
-        <span [matBadge]="product.rating.rate
-                " matBadgePosition="before" matBadgeColor="warn"
-                >
-        </span>
-        <img
-          src="https://www.freakyjolly.com/wp-content/uploads/2021/07/cropped-cropped-fj-logo-192-removebg-preview-e1625997712615-1.png"
-          mat-card-avatar />
-        <mat-card-title>{{product.title}}</mat-card-title>
-        <mat-card-subtitle>
-          {{product.category}}
-        </mat-card-subtitle>
-      </mat-card-header>
-    
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <div class="card-image-container">
-          <img mat-card-image [src]="product.image" alt="Angular Logo">
-        </div>
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <span [matBadge]="product.rating.rate" matBadgePosition="before" matBadgeColor="warn">
+      </span>
+      <img
+        src="assets/def_product.png"
+        mat-card-avatar />
+      <mat-card-title>{{product.title}}</mat-card-title>
+      <mat-card-subtitle>
+        {{product.category}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="card-image-container">
+        <img mat-card-image [src]="product.image" [attr.alt]="product.title">
       </div>
+    </div>
 
-     <div style="height:190px;overflow-y: auto ">
+    <div class="description-container">
       <mat-card-content fxLayout="row" fxLayoutAlign="start start">
-        {{ product.description  | truncate :160}}
-       </mat-card-content>
-     </div>
+        {{ product.description | truncate :160}}
+      </mat-card-content>
+    </div>
 
-     <div>
-<mat-card-content fxLayout="row" fxLayoutAlign="start start">
+    <div>
+      <mat-card-content fxLayout="row" fxLayoutAlign="start start">
         {{ product.price + '$'}}
-       </mat-card-content>
-     </div>
-    
-  
-     <div style="border: 2px red dashed" style="margin-top: auto;">
+      </mat-card-content>
+    </div>
+
+
+    <div class="margin-top-auto">
       <mat-card-actions>
         <button mat-raised-button color="accent">LIKE</button>
         <button mat-raised-button color="primary">SHARE</button>
       </mat-card-actions>
-     </div>
+    </div>
 
 
-     <button mat-flat-button color="warn" class="add-to-cart-btn">Add to Cart</button>
+    <button mat-flat-button color="warn" class="add-to-cart-btn">Add to Cart</button>
 
- 
-    </mat-card>
-  
-  </div>
+
+  </mat-card>
+
+</div>
